@@ -9,6 +9,7 @@ GRANT ALL PRIVILEGES ON `TestMain%`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `TestSecondary%`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `TongsTest%`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `DataTongsTest%`.* TO 'TestUser'@'%';
+GRANT ALL PRIVILEGES ON `sakila%`.* TO 'TestUser'@'%';
 
 -- Grant privileges for SchemaQuench integration test databases
 GRANT ALL PRIVILEGES ON `ModifyConstraintTests`.* TO 'TestUser'@'%';
@@ -18,6 +19,7 @@ GRANT ALL PRIVILEGES ON `ModifyIndexTests`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `AddMissingItemsTests`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `MiscellaneousTests`.* TO 'TestUser'@'%';
 GRANT ALL PRIVILEGES ON `CustomIndexTests`.* TO 'TestUser'@'%';
+GRANT ALL PRIVILEGES ON `LargeSchemaTests`.* TO 'TestUser'@'%';
 
 -- Grant INDEX privilege for creating/dropping indexes on any database
 GRANT INDEX ON *.* TO 'TestUser'@'%';

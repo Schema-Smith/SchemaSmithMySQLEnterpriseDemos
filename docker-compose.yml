@@ -12,8 +12,21 @@ services:
       demoserver:
         condition: service_healthy
 
+  quench-sakila:
+    image: schemasmithyfree/schemaquenchmysqlenterprisedemo:latest
+    environment:
+      - SmithySettings_Target__Server=demoserver
+      - SmithySettings_Target__User=${MYSQL_USER}
+      - SmithySettings_Target__Password=${MYSQL_PASSWORD}
+      - SmithySettings_SchemaPackagePath=/metadata
+    volumes:
+      - ./Sakila:/metadata
+    depends_on:
+      demoserver:
+        condition: service_healthy
+
 #  quench-adventureworks:
-#    image: schemasmithyfree/schemaquenchenterprisedemo:latest
+#    image: schemasmithyfree/schemaquenchmysqlenterprisedemo:latest
 #    environment:
 #      - SmithySettings_Target__Server=demoserver
 #      - SmithySettings_Target__User=${MYSQL_USER}
@@ -26,7 +39,7 @@ services:
 #        condition: service_healthy
 
 #  quench-northwind:
-#    image: schemasmithyfree/schemaquenchenterprisedemo:latest
+#    image: schemasmithyfree/schemaquenchmysqlenterprisedemo:latest
 #    environment:
 #      - SmithySettings_Target__Server=demoserver
 #      - SmithySettings_Target__User=${MYSQL_USER}
@@ -65,6 +78,8 @@ services:
       demoserver:
         condition: service_healthy
       quench-validproduct:
+        condition: service_completed_successfully
+      quench-sakila:
         condition: service_completed_successfully
 #      quench-adventureworks:
 #        condition: service_completed_successfully

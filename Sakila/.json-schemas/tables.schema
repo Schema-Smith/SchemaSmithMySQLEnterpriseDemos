@@ -1,0 +1,246 @@
+{
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "Table name"
+    },
+    "Engine": {
+      "type": "string",
+      "description": "Storage engine: InnoDB, MyISAM, MEMORY, etc.",
+      "default": "InnoDB"
+    },
+    "RowFormat": {
+      "type": "string",
+      "description": "Row format: DYNAMIC, COMPACT, COMPRESSED, REDUNDANT",
+      "pattern": "DYNAMIC|COMPACT|COMPRESSED|REDUNDANT"
+    },
+    "CharacterSet": {
+      "type": "string",
+      "description": "Table default character set"
+    },
+    "Collation": {
+      "type": "string",
+      "description": "Table default collation"
+    },
+    "Comment": {
+      "type": "string",
+      "description": "Table comment/description"
+    },
+    "AutoIncrementValue": {
+      "type": "integer",
+      "description": "AUTO_INCREMENT starting value",
+      "minimum": 1
+    },
+    "ShouldApplyExpression": {
+      "type": "string",
+      "description": "Expression for conditional deployment"
+    },
+    "OldName": {
+      "type": "string",
+      "description": "Previous table name for rename detection"
+    },
+    "Columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "DataType": {
+            "type": "string"
+          },
+          "Nullable": {
+            "type": "boolean"
+          },
+          "Default": {
+            "type": "string"
+          },
+          "AutoIncrement": {
+            "type": "boolean",
+            "description": "Whether this column is AUTO_INCREMENT"
+          },
+          "Generated": {
+            "type": "string",
+            "description": "For generated columns: STORED or VIRTUAL",
+            "pattern": "STORED|VIRTUAL"
+          },
+          "GenerationExpression": {
+            "type": "string",
+            "description": "Expression for generated columns"
+          },
+          "CharacterSet": {
+            "type": "string",
+            "description": "Column character set"
+          },
+          "Collation": {
+            "type": "string",
+            "description": "Column collation"
+          },
+          "Comment": {
+            "type": "string",
+            "description": "Column comment"
+          },
+          "ShouldApplyExpression": {
+            "type": "string"
+          },
+          "OldName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": [
+          "Name",
+          "DataType"
+        ]
+      }
+    },
+    "Indexes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "PrimaryKey": {
+            "type": "boolean"
+          },
+          "Unique": {
+            "type": "boolean"
+          },
+          "UniqueConstraint": {
+            "type": "boolean"
+          },
+          "IndexType": {
+            "type": "string",
+            "description": "Index type: BTREE, HASH, FULLTEXT, SPATIAL",
+            "pattern": "BTREE|HASH|FULLTEXT|SPATIAL",
+            "default": "BTREE"
+          },
+          "IndexColumns": {
+            "type": "string",
+            "description": "Comma-separated list of indexed columns"
+          },
+          "Visible": {
+            "type": "boolean",
+            "description": "Whether the index is visible to the optimizer",
+            "default": true
+          },
+          "Comment": {
+            "type": "string"
+          },
+          "ShouldApplyExpression": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": [
+          "Name",
+          "IndexColumns"
+        ]
+      }
+    },
+    "ForeignKeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Columns": {
+            "type": "string",
+            "description": "Comma-separated list of FK columns"
+          },
+          "RelatedTableSchema": {
+            "type": "string",
+            "description": "Referenced table database (empty = same database)"
+          },
+          "RelatedTable": {
+            "type": "string"
+          },
+          "RelatedColumns": {
+            "type": "string"
+          },
+          "DeleteAction": {
+            "type": "string",
+            "pattern": "RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT"
+          },
+          "UpdateAction": {
+            "type": "string",
+            "pattern": "RESTRICT|CASCADE|SET NULL|NO ACTION|SET DEFAULT"
+          },
+          "ShouldApplyExpression": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": [
+          "Name",
+          "Columns",
+          "RelatedTable",
+          "RelatedColumns"
+        ]
+      }
+    },
+    "CheckConstraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Expression": {
+            "type": "string"
+          },
+          "ShouldApplyExpression": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": [
+          "Name",
+          "Expression"
+        ]
+      }
+    },
+    "FullTextIndexes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Columns": {
+            "type": "string",
+            "description": "Comma-separated list of full-text indexed columns"
+          },
+          "Parser": {
+            "type": "string",
+            "description": "Full-text parser plugin (e.g., ngram, mecab)"
+          },
+          "Comment": {
+            "type": "string"
+          },
+          "ShouldApplyExpression": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true,
+        "required": [
+          "Name",
+          "Columns"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "Name",
+    "Columns"
+  ]
+}

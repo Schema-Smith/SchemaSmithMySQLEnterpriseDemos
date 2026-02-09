@@ -9,8 +9,9 @@ Each demo is self contained in one of the following subfolders
 | Demo           | Status |
 | -------------- | ------ |
 | ValidProduct   | Done |
-| Adventureworks | Done |
-| Northwind      | Done |
+| Sakila | WIP |
+| Adventureworks | Pending |
+| Northwind      | Pending |
 
 ## Quick Start Guide
 

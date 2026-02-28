@@ -25,4 +25,4 @@ docker compose up
 
 ## Additional Resources
 
-Checkout our [website](https://SchemaSmith.com/enterprise.html) for documentation about how these tools work to make deploying MySQL schema effortless.
+Checkout our [website](https://schemasmith.com/documentation/mysql/enterprise/getting-started.html) for documentation about how these tools work to make deploying MySQL schema effortless.
